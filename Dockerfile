@@ -19,6 +19,7 @@ RUN tar zxf /opt/$SOLR.tgz -C /opt/solr --strip-components 1
 RUN mv $SOLR_HOME/collection1/ $SOLR_HOME/ckan/
 RUN echo name=ckan > $SOLR_HOME/ckan/core.properties
 ADD https://github.com/spacelis/ckan/raw/master/ckan/config/solr/schema.xml $CKAN_HOME/src/ckan/ckan/config/solr/schema.xml
+RUN rm $SOLR_HOME/ckan/conf/schema.xml
 RUN ln -s $CKAN_HOME/src/ckan/ckan/config/solr/schema.xml $SOLR_HOME/ckan/conf/schema.xml
 
 EXPOSE 8983
